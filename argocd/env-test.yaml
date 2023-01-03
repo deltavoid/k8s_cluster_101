@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata: 
-  name: test
+  name: env-test
   namespace: argocd
 spec:
   project: default
@@ -9,11 +9,11 @@ spec:
   source:
     repoURL: https://github.com/deltavoid/k8s_cluster_191.git
     targetRevision: HEAD
-    path: test
+    path: env-test
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: test
+    namespace: env-test
 
   syncPolicy:
     syncOptions:
