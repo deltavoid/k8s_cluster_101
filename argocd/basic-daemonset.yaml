@@ -7,7 +7,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/deltavoid/k8s_cluster_191.git
+    repoURL: https://github.com/deltavoid/k8s_cluster_101.git
     targetRevision: HEAD
     path: basic-daemonset
 
