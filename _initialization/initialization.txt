@@ -2,18 +2,42 @@
 
 
 
-kubernetes
+#kubernetes
 
     sealos
 
+sudo sealos run labring/kubernetes:v1.24.0  \
+     --masters 192.168.122.101 \
+     --nodes 192.168.122.102,192.168.122.103 -p 1
 
-flannel
 
-    vxlan mode
+#部署
 
 argocd
 
-    helm
+sudo sealos run labring/argocd:v2.4.8
+
+
+helm
+
+sudo sealos run labring/helm:v3.8.2
+
+
+
+
+#CNI
+
+
+sudo sealos run labring/kube-ovn:v1.10.6
+
+
+
+
+#CSI
+
+
+sudo sealos run labring/openebs:v1.9.0
+
 
 
 
