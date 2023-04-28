@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata: 
+  name: frpc
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/deltavoid/k8s_cluster_101.git
+    targetRevision: HEAD
+    path: frpc
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: frpc
+
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true
+
