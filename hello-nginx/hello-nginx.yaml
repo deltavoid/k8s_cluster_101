@@ -1,0 +1,98 @@
+# hello-nginx
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hello-nginx
+data:
+  hello-nginx.conf: |-
+    server {
+      listen 80;
+      listen [::]:80;
+
+      server_name _;
+
+      #root /var/www/proxy_simple;
+      root /usr/share/nginx/html;
+
+    }
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hello-nginx-index
+data:
+  index.html: |-
+    hello nginx!
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-nginx
+  labels:
+    app: hello-nginx
+    version: v1.0
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hello-nginx
+      version: v1.0
+  template:
+    metadata:
+      labels:
+        app: hello-nginx
+        version: v1.0
+    spec:
+      containers:
+      - name: hello-nginx
+        image: nginx:1.22.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - name: web
+          containerPort: 80
+          protocol: TCP
+        volumeMounts:
+        - mountPath: /etc/nginx/conf.d/default.conf
+          name: nginx-etc
+          subPath: hello-nginx.conf
+          readOnly: true
+        # - mountPath: /usr/share/nginx/html/test.html
+        #   name: nginx-html
+        #   subPath: index.html
+        #   readOnly: true
+        - mountPath: /usr/share/nginx/html/index.html
+          name: nginx-html
+          subPath: index.html
+          readOnly: true
+
+      volumes:
+      - name: nginx-etc
+        configMap:
+          name: hello-nginx
+      - name: nginx-html
+        configMap:
+          name: hello-nginx-index
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-nginx
+  labels:
+    app: hello-nginx
+spec:
+  # type: ClusterIP
+  type: NodePort
+  selector:
+    app: hello-nginx
+  ports:
+  - name: http
+    port: 80
+    targetPort: 80
+    protocol: TCP
+  sessionAffinity: None
+  
