@@ -27,3 +27,10 @@ data:
     local_ip=my-wordpress.wordpress
     local_port=80
     remote_port=10184
+
+    [hello_nginx_10185]
+    type = tcp
+    local_ip=my-hello-nginx-proxy.hello-nginx
+    local_port=80
+    remote_port=10185
+    
