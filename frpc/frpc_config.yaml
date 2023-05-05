@@ -30,7 +30,6 @@ data:
 
     [hello_nginx_10185]
     type = tcp
-    local_ip=my-hello-nginx-proxy.hello-nginx
+    local_ip=hello-nginx-proxy.hello-nginx
     local_port=80
     remote_port=10185
-    
