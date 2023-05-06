@@ -10,17 +10,6 @@ data:
     server_port = 7000
     log_level=info
 
-    [hello_nginx_10180]
-    type = tcp
-    local_ip=hello-nginx.hello-nginx
-    local_port=80
-    remote_port=10180
-
-    [hello_nginx_10181]
-    type = tcp
-    local_ip=hello-nginx-proxy.hello-nginx
-    local_port=80
-    remote_port=10181
 
     [argocd_10182]
     type = tcp
@@ -28,9 +17,20 @@ data:
     local_port=80
     remote_port=10182
 
-    [wordpress_10183]
+    [hello_nginx_10183]
     type = tcp
-    local_ip=my-wordpress.wordpress
+    local_ip=hello-nginx.hello-nginx
     local_port=80
     remote_port=10183
 
+    [hello_nginx_10184]
+    type = tcp
+    local_ip=hello-nginx-proxy.hello-nginx
+    local_port=80
+    remote_port=10184
+
+    [wordpress_10185]
+    type = tcp
+    local_ip=my-wordpress.wordpress
+    local_port=80
+    remote_port=10185
