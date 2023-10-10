@@ -6,31 +6,31 @@ metadata:
 data:
   frpc.ini: |-
     [common]
-    server_addr = 43.138.38.22
+    server_addr = deltavoid.cloud
     server_port = 7000
     log_level=info
 
 
-    [argocd_10182]
+    [argocd_10082]
     type = tcp
     local_ip=argocd-server.argocd
     local_port=80
-    remote_port=10182
+    remote_port=10082
 
-    [hello_nginx_10183]
+    [hello_nginx_10083]
     type = tcp
     local_ip=hello-nginx.hello-nginx
     local_port=80
-    remote_port=10183
+    remote_port=10083
 
-    [hello_nginx_10184]
+    [hello_nginx_10084]
     type = tcp
     local_ip=hello-nginx-proxy.hello-nginx
     local_port=80
-    remote_port=10184
+    remote_port=10084
 
-    [wordpress_10185]
+    [wordpress_10085]
     type = tcp
     local_ip=my-wordpress.wordpress
     local_port=80
-    remote_port=10185
+    remote_port=10085
