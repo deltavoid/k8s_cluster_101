@@ -23,7 +23,7 @@ spec:
         workload.user.cattle.io/workloadselector: deployment-default-frpc
     spec:
       containers:
-      - image: snowdreamtech/frpc:0.33.0
+      - image: snowdreamtech/frpc:0.64
         imagePullPolicy: Always
         name: frpc
         volumeMounts:

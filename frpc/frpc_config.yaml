@@ -6,7 +6,7 @@ metadata:
 data:
   frpc.ini: |-
     [common]
-    server_addr = deltavoid.cloud
+    server_addr = deltavoid.dynv6.net
     server_port = 7000
     log_level=info
 
